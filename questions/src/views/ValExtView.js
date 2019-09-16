@@ -1,8 +1,7 @@
 import React from 'react'
 import { Input, Button, message } from 'antd';
 import axios from "axios";
-import { InputNumber } from 'antd';
-
+import NumberFormat from 'react-number-format';
 
 const { TextArea, } = Input;
 const ENDPOINT = 'http://localhost:8090/convert'
@@ -17,7 +16,7 @@ class IcaoView extends React.Component {
             converted_value: '',
             isloading: false,
         };
-        this.onChange = this.onChange.bind(this);
+        this.onValueChange = this.onValueChange.bind(this);
         this.toggle = this.toggle.bind(this);
     }
 
@@ -36,28 +35,27 @@ class IcaoView extends React.Component {
             });
     };
 
-    onChange = (value) => {
-        let new_value = '';
-        if (value != null) {
-            new_value = value.toString().replace('.', ',')
-        }else{
-            new_value = ''
-        }
-        this.setState({
-             value_to_convert: new_value
-        });
-        console.log(this.state.value_to_convert);
+    onValueChange = (values) => {
+     this.setState({
+         value_to_convert: values.value.replace('.', ',')
+     });
     };
 
     render() {
         return (
             <div>
                 <h3>Digite um valor númerico</h3>
-                <InputNumber style={{ width: `30%` }}
-                  defaultValue={1000}
-                  decimalSeparator = ','
-                  onChange={this.onChange}
+           
+                <NumberFormat  displayType={'input'} decimalSeparator={','}
+                    thousandSeparator={'.'} prefix={'R$'} isNumericString={true}
+                    allowNegative={false} decimalScale={2}
+                    isAllowed={(values) => {
+                        const { formattedValue, floatValue } = values;
+                        return formattedValue === "" || floatValue <= 999999999.99
+                    }}
+                    onValueChange = {this.onValueChange}        
                 />
+
                 <div style={{ marginTop: 20 }}>
                     <Button onClick={this.toggle} type="primary" loading={this.state.isloading} >
                         Converter
