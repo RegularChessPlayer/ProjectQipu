@@ -2,15 +2,15 @@
   Prova prática resolvida usando react para o front-end e flask para o back da aplição.
   
 ## Requirementos 
-*Virtual Environment
-*Python3
-*Node
-*Npm
+* Virtual Environment
+* Python3
+* Node
+* Npm
 
 ## Instalação
 No diretório back_questions
 * Criação virtual enviroment
-  *python3 -m venv env (Criação virtual enviroment)
+  * python3 -m venv env (Criação virtual enviroment)
 
 * Ativar virtual environment em: SistemaVendas/sistemavendas
   * source bin/activate
@@ -21,7 +21,7 @@ No diretório back_questions
 
 No diretório questions
   * Instalar as depedências do projeto
-    *npm install
+    * npm install
     
   * Startar a aplicação
-    *npm start
+    * npm start
