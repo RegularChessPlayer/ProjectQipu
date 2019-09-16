@@ -35,10 +35,16 @@ class IcaoView extends React.Component {
                 alert('Não foi possível converter o valor!. Tente mais tarde.');
             });
     };
-    
+
     onChange = (value) => {
+        let new_value = '';
+        if (value != null) {
+            new_value = value.toString().replace('.', ',')
+        }else{
+            new_value = ''
+        }
         this.setState({
-            value_to_convert: value.toString().replace('.', ',')
+             value_to_convert: new_value
         });
         console.log(this.state.value_to_convert);
     };
