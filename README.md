@@ -1,5 +1,5 @@
 # ProjectQipu
-  Prova prática resolvida usando react para o front-end e flask para o back da aplição.
+  Prova prática resolvida usando react para o front-end e flask para o back-end da aplição.
   
 ## Requirementos 
 * Virtual Environment
